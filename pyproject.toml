@@ -1,0 +1,11 @@
+[project]
+name = "mcp-test"
+version = "0.1.0"
+description = "火山引擎图像生成 MCP 服务器"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "mcp[cli]>=1.15.0",
+    "requests>=2.31.0",
+    "openai>=2.0.0",
+]
