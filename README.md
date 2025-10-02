@@ -28,9 +28,7 @@
 
 | 模型 | 功能 | 最大分辨率 |
 |------|------|------------|
-| doubao-seedream-4.0 | 文生图、图生图、组图生成 | 4096x4096 |
-| doubao-seedream-3.0-t2i | 文本生成图像 | 2048x2048 |
-| doubao-seededit-3.0-i2i | 图像编辑 | 2048x2048 |
+| ep-20251002170303-b2mr4 | 文生图、图生图、组图生成 | 4096x4096 |
 
 ## 安装和配置
 
@@ -40,13 +38,27 @@
 uv sync
 ```
 
-### 2. 启动服务器
+### 2. 设置环境变量
+
+在启动服务器之前，需要设置火山引擎 API 密钥：
+
+**Windows (PowerShell):**
+```powershell
+$env:ARK_API_KEY = "your-api-key-here"
+```
+
+**Linux/Mac:**
+```bash
+export ARK_API_KEY="your-api-key-here"
+```
+
+### 3. 启动服务器
 
 ```bash
 python main.py
 ```
 
-### 3. MCP 客户端配置
+### 4. MCP 客户端配置
 
 在你的 MCP 客户端配置文件中添加：
 
@@ -57,11 +69,16 @@ python main.py
       "command": "D:\\Desktop\\mcp-test\\.venv\\Scripts\\python.exe",
       "args": [
         "D:\\Desktop\\mcp-test\\main.py"
-      ]
+      ],
+      "env": {
+        "ARK_API_KEY": "your-api-key-here"
+      }
     }
   }
 }
 ```
+
+**注意：** 将 `your-api-key-here` 替换为你的实际API密钥。
 
 ## 使用示例
 
@@ -71,8 +88,7 @@ python main.py
 # 通过 MCP 客户端调用
 generate_image(
     prompt="一只可爱的小猫坐在花园里，阳光明媚",
-    api_key="your_volc_api_key",
-    model="doubao-seedream-4.0",
+    model="ep-20251002170303-b2mr4",
     size="2048x2048"
 )
 ```
@@ -90,25 +106,43 @@ create_image_prompt(
 # 输出: "一只小猫，高质量写实风格，宁静祥和的氛围，居中构图，高质量，细节丰富，专业摄影"
 ```
 
-## API 密钥获取
+## 环境变量配置
+
+### ARK_API_KEY
+
+设置火山引擎 API 密钥环境变量：
+
+**Windows (PowerShell):**
+```powershell
+$env:ARK_API_KEY = "your-api-key-here"
+```
+
+**Linux/Mac:**
+```bash
+export ARK_API_KEY="your-api-key-here"
+```
+
+### API 密钥获取
 
 1. 访问 [火山引擎控制台](https://console.volcengine.com/)
 2. 开通豆包大模型服务
 3. 获取 API 密钥
-4. 在调用工具时传入 `api_key` 参数
+4. 按上述方法设置环境变量
 
 ## 注意事项
 
-- 请确保你有有效的火山引擎 API 密钥
+- 请确保已正确设置 `ARK_API_KEY` 环境变量
 - 图像生成可能需要一些时间，请耐心等待
 - 建议提示词不超过300个汉字或600个英文单词
 - 生成的图像会通过 API 响应返回，包含图像URL或Base64数据
+- API密钥通过环境变量管理，不会暴露在代码中，确保安全性
 
 ## 技术支持
 
 - 基于 FastMCP 框架构建
-- 使用火山引擎 Seedream 4.0 API
+- 使用火山引擎 Seedream API
 - 支持多种图像生成模式和参数配置
+- 通过环境变量安全管理API密钥
 
 ## 许可证
 
