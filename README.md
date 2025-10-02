@@ -1,6 +1,6 @@
-# 火山引擎图像生成 MCP 服务器
+# 火山引擎 Seedream 4.0 图像生成 MCP 服务器
 
-基于火山引擎 Seedream API 的 MCP (Model Context Protocol) 服务器，提供强大的图像生成功能。
+基于火山引擎 Seedream 4.0 API 的 MCP (Model Context Protocol) 服务器，提供强大的图像生成功能。
 
 ## 功能特性
 
@@ -28,7 +28,7 @@
 
 | 模型 | 功能 | 最大分辨率 |
 |------|------|------------|
-| ep-20251002170303-b2mr4 | 文生图、图生图、组图生成 | 4096x4096 |
+| Seedream 4.0 (ep-20251002170303-b2mr4) | 文生图、图生图、组图生成 | 4096x4096 |
 
 ## 安装和配置
 
@@ -51,7 +51,7 @@ python main.py
 ```json
 {
   "mcpServers": {
-    "volc-image-generator": {
+    "seedream-4.0-image-mcp": {
       "command": "D:\\Desktop\\mcp-test\\.venv\\Scripts\\python.exe",
       "args": [
         "D:\\Desktop\\mcp-test\\main.py"
@@ -74,7 +74,7 @@ python main.py
 # 通过 MCP 客户端调用
 generate_image(
     prompt="一只可爱的小猫坐在花园里，阳光明媚",
-    model="ep-20251002170303-b2mr4",
+    model="ep-20251002170303-b2mr4",  # Seedream 4.0
     size="2048x2048"
 )
 ```
@@ -130,7 +130,7 @@ export ARK_API_KEY="your-api-key-here"
 ## 技术支持
 
 - 基于 FastMCP 框架构建
-- 使用火山引擎 Seedream API
+- 使用火山引擎 Seedream 4.0 API
 - 支持多种图像生成模式和参数配置
 - 通过环境变量安全管理API密钥
 
