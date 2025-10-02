@@ -38,27 +38,13 @@
 uv sync
 ```
 
-### 2. 设置环境变量
-
-在启动服务器之前，需要设置火山引擎 API 密钥：
-
-**Windows (PowerShell):**
-```powershell
-$env:ARK_API_KEY = "your-api-key-here"
-```
-
-**Linux/Mac:**
-```bash
-export ARK_API_KEY="your-api-key-here"
-```
-
-### 3. 启动服务器
+### 2. 启动服务器
 
 ```bash
 python main.py
 ```
 
-### 4. MCP 客户端配置
+### 3. MCP 客户端配置
 
 在你的 MCP 客户端配置文件中添加：
 
@@ -108,9 +94,13 @@ create_image_prompt(
 
 ## 环境变量配置
 
-### ARK_API_KEY
+### 方式1：MCP配置文件（推荐）
 
-设置火山引擎 API 密钥环境变量：
+直接在MCP客户端配置文件的 `env` 字段中设置API密钥，如上面的配置示例所示。
+
+### 方式2：系统环境变量
+
+如果需要在系统级别设置环境变量：
 
 **Windows (PowerShell):**
 ```powershell
@@ -131,11 +121,11 @@ export ARK_API_KEY="your-api-key-here"
 
 ## 注意事项
 
-- 请确保已正确设置 `ARK_API_KEY` 环境变量
+- API密钥已在MCP配置文件中设置，无需额外配置环境变量
 - 图像生成可能需要一些时间，请耐心等待
 - 建议提示词不超过300个汉字或600个英文单词
 - 生成的图像会通过 API 响应返回，包含图像URL或Base64数据
-- API密钥通过环境变量管理，不会暴露在代码中，确保安全性
+- API密钥通过MCP配置管理，不会暴露在代码中，确保安全性
 
 ## 技术支持
 
